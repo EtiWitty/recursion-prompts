@@ -147,11 +147,35 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
 var multiply = function(x, y) {
+    if (x == 0) {
+        return 0;
+    } else if (x < 0) {
+        return - multiply(- x, y);// ??
+    } else if (x > 0) {
+        return y + multiply(x - 1, y);
+    }
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods to arrive at an approximate quotient (ignore decimal endings).
 var divide = function(x, y) {
+    if(y === 0) {
+        return NaN;
+    } else if(x === 0 || x<y) {
+        return 0;
+    } else if (y === x) {
+        return 1;
+    } else if(y === 1) {
+        return x;
+    } else if (x<0 && y<0) {
+        return divide();
+    } else if (x<0 && y>0) {
+        return -divide();
+    } else if (x>0 && y<0) {
+        return -divide;
+    } else if(x>y) {
+        return divide();
+    }
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers. The GCD of two
@@ -172,6 +196,11 @@ var compareStr = function(str1, str2) {
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str) {
+    if (str.length === 0){
+        return [];
+    } else {
+        return [str[0]].concat(createArray(str.slice(1)));
+    }
 };
 
 // 17. Reverse the order of an array
